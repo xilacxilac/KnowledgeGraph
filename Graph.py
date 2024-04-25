@@ -90,7 +90,20 @@ class Graph:
 
             return "Success"
 
-    def build_graph(self, path):
+    def build_graph(self, csv_path):
+        # VERY UNFINISHED
+        cache: list[tuple[str, str, str]] = []
+        with open(csv_path) as csv_file:
+            for line in csv_file:
+                line_arr = line.split(",")
+                if len(line_arr) == 3:
+                    name1, relation, name2 = line_arr[0], line_arr[1], line_arr[2]
+                    if name1 in self.names and name2 in self.names:
+                        node1 = self.find_node_by_name(name1)
+                        node2 = self.find_node_by_name(name2)
+                        if node1 and node2:
+                            self.add_new_relationship(node1, node2, )
+
         # when instanceOf --> redirect to types defined
         pass
 
