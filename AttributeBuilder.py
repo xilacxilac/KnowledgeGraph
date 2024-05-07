@@ -2,8 +2,8 @@ import yfinance as yf
 
 #from typing import Optional
 
-yf_company_attr = {"industry",
-                   "sector",
+yf_company_attr = {"industryKey",
+                   "sectorKey",
                    "longBusinessSummary",
                    "fullTimeEmployees",
                    "auditRisk",
@@ -12,16 +12,16 @@ yf_company_attr = {"industry",
                    "shareHolderRightsRisk",
                    "overallRisk",
                    "symbol"}
+yf_company_twoway_attr = {"industryKey",
+                          "sectorKey"}
 location_key = {"address1", "city", "state", "country"}
-# address1 --> add later?
-# industry and sector or industryKey and sectorKey
 # companyOfficers --> (maxAge, name, age, title, yearBorn, fiscalYear, totalPay, exercisedValue, unexercisedValue)
 #
 # maybe other financial data??
 
 
-def build_company(ticker: str) -> tuple[list[tuple[str, str, str]], str, tuple[str, str, str, str]]:
-    tag2attribute: list[tuple[str, str, str]] = list()
+def build_company(ticker: str) -> tuple[list[tuple[str, str]], str, tuple[str, str, str, str]]:
+    tag2attribute: list[tuple[str, str]] = list()
     company: str = ""
     hq_location: tuple[str, str, str, str] = ("", "", "", "")
     try:
@@ -32,7 +32,7 @@ def build_company(ticker: str) -> tuple[list[tuple[str, str, str]], str, tuple[s
 
     for relation, attribute in ticker.info.items():
         if relation in yf_company_attr:
-            tag2attribute.append((relation, "", attribute))
+            tag2attribute.append((relation, attribute))
         if relation == "shortName":
             company = attribute
 
