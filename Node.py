@@ -1,8 +1,12 @@
+import uuid
+
+
 class Node:
     def __init__(self, value: str) -> None:
         self.relation = []
         self.neighbor = []
         self.value = value
+        self.node_id: str = str(uuid.uuid4())
 
     def __str__(self) -> str:
         return f"Node: {self.value}, Relations: {self.relation}, Neighbors: {self.neighbor}"
