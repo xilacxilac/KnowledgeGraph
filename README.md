@@ -1,14 +1,5 @@
 ## Knowledge Graph
 
-### Node.py
-#### Attributes
-- self.relation: A list of edge names for each relation neighbors
-- self.neighbor: A list of neighbor Nodes
-- self.value: Value of the Node
-#### Functions 
-- add_relation(self, relation: str, node2: 'Node')
-  - Creates a new edge between two nodes
-
 ### Graph.py
 #### Notes:
 - Attributes are mostly used for fast access for queries

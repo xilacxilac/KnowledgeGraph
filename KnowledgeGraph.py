@@ -1,17 +1,21 @@
-from typing import Optional
+# 5MODA8JgyXRwgmI2iWVWKY
 
+import urllib.parse
 import pycountry
 
-from AttributeBuilder import yf_company_attr, yf_company_twoway_attr, build_company, build_risk_factor, build_general_event, build_event
+from AttributeBuilder import yf_company_twoway_attr, build_company, build_risk_factor, get_company_name
 from rdflib import Graph, Literal, RDF, URIRef, RDFS
 from rdflib.tools.rdf2dot import rdf2dot
 from io import StringIO
 
-rdf_types = {"streetAddress", "city", "state", "country", "company", "sector", "industry"}
-predicates = {"hasState", "belongsToCountry", "hasCity", "belongsToState", "hasAddress", "belongsToCity"}
+rdf_types = {"streetAddress", "city", "state", "country", "company", "sector", "industry", "riskFactor", "year", "month",
+             "day", "SECSentence"}
+predicates = {"hasState", "belongsToCountry", "hasCity", "belongsToState", "hasAddress", "belongsToCity", "isYear",
+              "isMonth", "text", "relatedToRiskFactor", "belongsToCompany", "hasRiskFactor", "companiesWithRiskFactor",
+              "hasFilingYear", "hasSECSentence"}
+risk_factors = {"General", "Weather", "Political", "Economy", "Energy", "Business"}
 
 
-# 5MODA8JgyXRwgmI2iWVWKY
 class KnowledgeGraph:
     def __init__(self) -> None:
         # Stores the graph as an RDF
@@ -21,16 +25,20 @@ class KnowledgeGraph:
         # Stores nodes
         self.rdf_nodes: dict[str, URIRef] = dict()
 
-        for attribute in yf_company_attr:
-            self.rdf_nodes[attribute] = URIRef(self.uri + attribute)
         for types in rdf_types:
             self.rdf_nodes[types] = URIRef(self.uri + types)
+        for risk_factor in risk_factors:
+            self.rdf_nodes[f"riskFactor/{risk_factor}"] = URIRef(self.uri + f"riskFactor/{risk_factor}")
+            self.rdf.add((self.rdf_nodes[f"riskFactor/{risk_factor}"], RDF.type, self.rdf_nodes["riskFactor"]))
 
         # Stores predicates (edges)
         self.predicates: dict[str, URIRef] = dict()
 
         for predicate in predicates:
             self.predicates[predicate] = URIRef(self.uri + predicate)
+
+        # Counter Variables
+        self.SEC_sentence_count = dict()
 
     @staticmethod
     def format_location(location: tuple[str, str, str, str]) -> tuple[str, str, str, str]:
@@ -116,6 +124,30 @@ class KnowledgeGraph:
                             self.rdf.add((self.rdf_nodes[address_loc], self.predicates["belongsToState"], self.rdf_nodes[state_loc]))
                             self.rdf.add((self.rdf_nodes[address_loc], self.predicates["belongsToCountry"], self.rdf_nodes[country]))
 
+    def add_date(self, year: str, month: str, day: str):
+        if year:
+            year_uri = self.uri + f"date/{year}"
+            if year not in self.rdf_nodes:
+                self.rdf_nodes[year] = URIRef(year_uri)
+                self.rdf.add((self.rdf_nodes[year], RDF.type, self.rdf_nodes["year"]))
+
+            if month:
+                month_loc = f"{year}/{month}"
+                month_uri = year_uri + f"/{month}"
+                if month_loc not in self.rdf_nodes:
+                    self.rdf_nodes[month_loc] = URIRef(month_uri)
+                    self.rdf.add((self.rdf_nodes[month_loc], RDF.type, self.rdf_nodes["month"]))
+                    self.rdf.add((self.rdf_nodes[month_loc], self.predicates["isYear"], self.rdf_nodes[year]))
+
+                if day:
+                    day_loc = f"{month_loc}/{day}"
+                    day_uri = month_uri + f"/{day}"
+                    if day_loc not in self.rdf_nodes:
+                        self.rdf_nodes[day_loc] = URIRef(day_uri)
+                        self.rdf.add((self.rdf_nodes[day_loc], RDF.type, self.rdf_nodes["day"]))
+                        self.rdf.add((self.rdf_nodes[day_loc], self.predicates["isYear"], self.rdf_nodes[year]))
+                        self.rdf.add((self.rdf_nodes[day_loc], self.predicates["isMonth"], self.rdf_nodes[month_loc]))
+
     def add_company(self, ticker: str) -> str:
         attr_list, company, location = build_company(ticker)
         address, city, state, country = self.format_location(location)
@@ -127,6 +159,7 @@ class KnowledgeGraph:
             company_no_space = company.replace(" ", "%20")
             rdf_namespace = self.uri + "company/" + company_no_space
             rdf_company = URIRef(rdf_namespace)
+            self.SEC_sentence_count[ticker] = 0
 
             if rdf_namespace not in self.rdf_nodes:
                 self.rdf_nodes[rdf_namespace] = rdf_company
@@ -139,10 +172,10 @@ class KnowledgeGraph:
 
                         if attribute not in self.rdf_nodes:
                             attr_namespace = self.uri + f"{attr_name}/"
-                            self.rdf_nodes[attribute] = URIRef(attr_namespace + attribute)
-                            self.rdf.add((self.rdf_nodes[attribute], RDF.type, self.rdf_nodes[attr_name]))
+                            self.rdf_nodes[f"companyAttribute/{attribute}"] = URIRef(attr_namespace + attribute)
+                            self.rdf.add((self.rdf_nodes[f"companyAttribute/{attribute}"], RDF.type, self.rdf_nodes[attr_name]))
 
-                        self.add_edge(rdf_company, self.rdf_nodes[attribute], attr_name, relation2)
+                        self.add_edge(rdf_company, self.rdf_nodes[f"companyAttribute/{attribute}"], attr_name, relation2)
                     else:
                         self.add_attribute_literal(rdf_company, attribute, relation1)
 
@@ -161,23 +194,97 @@ class KnowledgeGraph:
             else:
                 return "Company has already been added"
 
-    def add_risk_factor(self, risk_factor: str) -> str:
-        pass
+    def add_risk_factors(self, ticker: str) -> str:
+        add_company_response = self.add_company(ticker)
+        company_name = get_company_name(ticker)
 
-    def add_general_event(self, general_event: str) -> str:
-        pass
+        if add_company_response != "Success":
+            return add_company_response
+        elif not company_name:
+            return "Company not found"
+        else:
+            company_no_space = company_name.replace(" ", "%20")
 
-    def add_event(self, event: str) -> str:
-        pass
+            year_to_events = build_risk_factor(ticker)
+            company_risk_factors = set()
+            company_node = self.rdf_nodes[f"{self.uri}company/{company_no_space}"]
 
-    def add_article(self, article: str) -> str:
-        pass
+            for year in year_to_events:
+                dates, arr = year_to_events[year]
+                self.add_date(dates[0], "", "") # dates[1], dates[2] will not be included for simplicity
+                for sentence_in_SEC_filing, risk_factor in arr:
+                    if risk_factor in risk_factors:
+                        if risk_factor not in company_risk_factors:
+                            company_risk_factors.add(risk_factor)
 
-    def build_graph(self, json_path):
-        pass
+                        sentence_node = URIRef(self.uri + f"company/{company_no_space}/SEC/sentence/sentence{self.SEC_sentence_count[ticker]}")
+                        self.rdf.add((sentence_node, RDF.type, self.rdf_nodes["SECSentence"]))
+                        self.rdf.add((sentence_node, self.predicates["text"], Literal(sentence_in_SEC_filing)))
+                        self.rdf.add((sentence_node, self.predicates["relatedToRiskFactor"], self.rdf_nodes[f"riskFactor/{risk_factor}"]))
+                        self.rdf.add((sentence_node, self.predicates["belongsToCompany"], company_node))
+                        self.rdf.add((sentence_node, self.predicates["hasFilingYear"], self.rdf_nodes[dates[0]]))
+                        self.rdf.add((company_node, self.predicates["hasSECSentence"], sentence_node))
 
-    def query(self):
-        pass
+                        self.SEC_sentence_count[ticker] += 1
+
+            for risk_factor in company_risk_factors:
+                self.rdf.add((self.rdf_nodes[f"riskFactor/{risk_factor}"], self.predicates["companiesWithRiskFactor"], company_node))
+                self.rdf.add((company_node, self.predicates["hasRiskFactor"], self.rdf_nodes[f"riskFactor/{risk_factor}"]))
+
+            return "Success"
+
+    def reformat_query(self, results):
+        results_list = list()
+        for result in results:
+            uri = result[0]
+            name = urllib.parse.unquote(uri.split('/')[-1])
+            results_list.append(name)
+
+        return results_list
+
+    def list_sectors(self):
+        query = f"""
+                    PREFIX ns1: <{self.uri}>
+                    SELECT DISTINCT ?sector
+                    WHERE {{
+                        ?company ns1:sector ?sector .
+                    }}
+                """
+        return self.reformat_query(self.rdf.query(query))
+
+    def query_by_sector(self, sector):
+        query = f"""
+            PREFIX ns1: <{self.uri}>
+            SELECT ?company
+            WHERE {{
+                ?company rdf:type ns1:company .
+                ?company ns1:sector <http://example.org/sector/{sector}> .
+            }}
+        """
+
+        return self.reformat_query(self.rdf.query(query))
+
+    def list_industry(self):
+        query = f"""
+                    PREFIX ns1: <{self.uri}>
+                    SELECT DISTINCT ?industry
+                    WHERE {{
+                        ?company ns1:industry ?industry .
+                    }}
+                """
+        return self.reformat_query(self.rdf.query(query))
+
+    def query_by_industry(self, industry):
+        query = f"""
+            PREFIX ns1: <{self.uri}>
+            SELECT ?company
+            WHERE {{
+                ?company rdf:type ns1:company .
+                ?company ns1:industry <http://example.org/industry/{industry}> .
+            }}
+        """
+
+        return self.reformat_query(self.rdf.query(query))
 
     def export_visualization(self) -> None:
         dot_stream = StringIO()

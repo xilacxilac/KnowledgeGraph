@@ -1,180 +1,43 @@
 [
   {
-    "@id": "http://example.org/company/Advanced%20Micro%20Devices,%20Inc.",
+    "@id": "http://example.org/riskFactor/Economy",
     "@type": [
-      "http://example.org/company"
+      "http://example.org/riskFactor"
     ],
-    "http://example.org/auditRisk": [
+    "http://example.org/companiesWithRiskFactor": [
       {
-        "@value": 8
-      }
-    ],
-    "http://example.org/boardRisk": [
-      {
-        "@value": 4
-      }
-    ],
-    "http://example.org/compensationRisk": [
-      {
-        "@value": 8
-      }
-    ],
-    "http://example.org/fullTimeEmployees": [
-      {
-        "@value": 26000
-      }
-    ],
-    "http://example.org/headquarteredIn": [
-      {
-        "@id": "http://example.org/location/US/CA/Santa%20Clara/2485%20Augustine%20Drive"
-      },
-      {
-        "@id": "http://example.org/location/US/CA/Santa%20Clara"
-      },
-      {
-        "@id": "http://example.org/location/US/CA"
-      },
-      {
-        "@id": "http://example.org/location/US"
-      }
-    ],
-    "http://example.org/industry": [
-      {
-        "@id": "http://example.org/industry/semiconductors"
-      }
-    ],
-    "http://example.org/longBusinessSummary": [
-      {
-        "@value": "Advanced Micro Devices, Inc. operates as a semiconductor company worldwide. It operates through Data Center, Client, Gaming, and Embedded segments. The company offers x86 microprocessors and graphics processing units (GPUs) as an accelerated processing unit, chipsets, data center, and professional GPUs; and embedded processors, and semi-custom system-on-chip (SoC) products, microprocessor and SoC development services and technology, data processing unites, field programmable gate arrays (FPGA), and adaptive SoC products. It provides processors under the AMD Ryzen, AMD Ryzen PRO, Ryzen Threadripper, Ryzen Threadripper PRO, AMD Athlon, AMD Athlon PRO, and AMD PRO A-Series brand names; graphics under the AMD Radeon graphics and AMD Embedded Radeon graphics; and professional graphics under the AMD Radeon Pro graphics brand name. In addition, the company offers data center graphics under the Radeon Instinct and Radeon PRO V-series brands, as well as servers under the AMD Instinct accelerators brand; server microprocessors under the AMD EPYC brands; low power solutions under the AMD Athlon, AMD Geode, AMD Ryzen, AMD EPYC, AMD R-Series, and G-Series brands; FPGA products under the Virtex-6, Virtex-7, Virtex UltraScale+, Kintex-7, Kintex UltraScale, Kintex UltraScale+, Artix-7, Artix UltraScale+, Spartan-6, and Spartan-7 brands; adaptive SOCs under the Zynq-7000, Zynq UltraScale+ MPSoC, Zynq UltraScale+ RFSoCs, Versal HBM, Versal Premium, Versal Prime, Versal AI Core, Versal AI Edge, Vitis, and Vivado brands; and compute and network acceleration board products under the Alveo brand. It serves original equipment and design manufacturers, public cloud service providers, system integrators, independent distributors, and add-in-board manufacturers through its direct sales force, and sales representatives. Advanced Micro Devices, Inc. was incorporated in 1969 and is headquartered in Santa Clara, California."
-      }
-    ],
-    "http://example.org/overallRisk": [
-      {
-        "@value": 5
-      }
-    ],
-    "http://example.org/sector": [
-      {
-        "@id": "http://example.org/sector/technology"
-      }
-    ],
-    "http://example.org/shareHolderRightsRisk": [
-      {
-        "@value": 3
-      }
-    ],
-    "http://example.org/symbol": [
-      {
-        "@value": "AMD"
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
       }
     ]
   },
   {
-    "@id": "http://example.org/sector/technology",
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence5",
     "@type": [
-      "http://example.org/sector"
+      "http://example.org/SECSentence"
     ],
-    "http://example.org/companyInSector": [
+    "http://example.org/belongsToCompany": [
       {
-        "@id": "http://example.org/company/NVIDIA%20Corporation"
-      },
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ],
+    "http://example.org/hasFilingYear": [
       {
-        "@id": "http://example.org/company/Advanced%20Micro%20Devices,%20Inc."
-      },
+        "@id": "http://example.org/date/2010"
+      }
+    ],
+    "http://example.org/relatedToRiskFactor": [
       {
-        "@id": "http://example.org/company/Microsoft%20Corporation"
-      },
+        "@id": "http://example.org/riskFactor/Economy"
+      }
+    ],
+    "http://example.org/text": [
       {
-        "@id": "http://example.org/company/Apple%20Inc."
+        "@value": "Tight credit markets impacting ability to obtain financing on reasonable terms"
       }
     ]
   },
   {
-    "@id": "http://example.org/company/Amazon.com,%20Inc.",
-    "@type": [
-      "http://example.org/company"
-    ],
-    "http://example.org/auditRisk": [
-      {
-        "@value": 5
-      }
-    ],
-    "http://example.org/boardRisk": [
-      {
-        "@value": 10
-      }
-    ],
-    "http://example.org/compensationRisk": [
-      {
-        "@value": 10
-      }
-    ],
-    "http://example.org/fullTimeEmployees": [
-      {
-        "@value": 1525000
-      }
-    ],
-    "http://example.org/headquarteredIn": [
-      {
-        "@id": "http://example.org/location/US/WA/Seattle/410%20Terry%20Avenue%20North"
-      },
-      {
-        "@id": "http://example.org/location/US/WA/Seattle"
-      },
-      {
-        "@id": "http://example.org/location/US/WA"
-      },
-      {
-        "@id": "http://example.org/location/US"
-      }
-    ],
-    "http://example.org/industry": [
-      {
-        "@id": "http://example.org/industry/internet-retail"
-      }
-    ],
-    "http://example.org/longBusinessSummary": [
-      {
-        "@value": "Amazon.com, Inc. engages in the retail sale of consumer products, advertising, and subscriptions service through online and physical stores in North America and internationally. The company operates through three segments: North America, International, and Amazon Web Services (AWS). It also manufactures and sells electronic devices, including Kindle, Fire tablets, Fire TVs, Echo, Ring, Blink, and eero; and develops and produces media content. In addition, the company offers programs that enable sellers to sell their products in its stores; and programs that allow authors, independent publishers, musicians, filmmakers, Twitch streamers, skill and app developers, and others to publish and sell content. Further, it provides compute, storage, database, analytics, machine learning, and other services, as well as advertising services through programs, such as sponsored ads, display, and video advertising. Additionally, the company offers Amazon Prime, a membership program. The company's products offered through its stores include merchandise and content purchased for resale and products offered by third-party sellers. It serves consumers, sellers, developers, enterprises, content creators, advertisers, and employees. Amazon.com, Inc. was incorporated in 1994 and is headquartered in Seattle, Washington."
-      }
-    ],
-    "http://example.org/overallRisk": [
-      {
-        "@value": 10
-      }
-    ],
-    "http://example.org/sector": [
-      {
-        "@id": "http://example.org/sector/consumer-cyclical"
-      }
-    ],
-    "http://example.org/shareHolderRightsRisk": [
-      {
-        "@value": 2
-      }
-    ],
-    "http://example.org/symbol": [
-      {
-        "@value": "AMZN"
-      }
-    ]
-  },
-  {
-    "@id": "http://example.org/industry/semiconductors",
-    "@type": [
-      "http://example.org/industry"
-    ],
-    "http://example.org/companyInIndustry": [
-      {
-        "@id": "http://example.org/company/NVIDIA%20Corporation"
-      },
-      {
-        "@id": "http://example.org/company/Advanced%20Micro%20Devices,%20Inc."
-      }
-    ]
-  },
-  {
-    "@id": "http://example.org/location/US/CA",
+    "@id": "http://example.org/location/US/WA",
     "@type": [
       "http://example.org/state"
     ],
@@ -185,32 +48,44 @@
     ],
     "http://example.org/companiesHeadquartedIn": [
       {
-        "@id": "http://example.org/company/NVIDIA%20Corporation"
-      },
-      {
-        "@id": "http://example.org/company/Advanced%20Micro%20Devices,%20Inc."
-      },
-      {
-        "@id": "http://example.org/company/Apple%20Inc."
+        "@id": "http://example.org/company/Microsoft%20Corporation"
       }
     ],
     "http://example.org/hasCity": [
       {
-        "@id": "http://example.org/location/US/CA/Santa%20Clara"
-      },
-      {
-        "@id": "http://example.org/location/US/CA/Cupertino"
+        "@id": "http://example.org/location/US/WA/Redmond"
       }
     ]
   },
   {
-    "@id": "http://example.org/industry/internet-retail",
+    "@id": "http://example.org/date/2010",
     "@type": [
-      "http://example.org/industry"
+      "http://example.org/year"
+    ]
+  },
+  {
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence18",
+    "@type": [
+      "http://example.org/SECSentence"
     ],
-    "http://example.org/companyInIndustry": [
+    "http://example.org/belongsToCompany": [
       {
-        "@id": "http://example.org/company/Amazon.com,%20Inc."
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ],
+    "http://example.org/hasFilingYear": [
+      {
+        "@id": "http://example.org/date/2011"
+      }
+    ],
+    "http://example.org/relatedToRiskFactor": [
+      {
+        "@id": "http://example.org/riskFactor/Economy"
+      }
+    ],
+    "http://example.org/text": [
+      {
+        "@value": "Growth outside the United States increasing exposure to global economic and political conditions"
       }
     ]
   },
@@ -221,24 +96,15 @@
     ],
     "http://example.org/companiesHeadquartedIn": [
       {
-        "@id": "http://example.org/company/NVIDIA%20Corporation"
-      },
-      {
-        "@id": "http://example.org/company/Advanced%20Micro%20Devices,%20Inc."
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
       },
       {
         "@id": "http://example.org/company/Microsoft%20Corporation"
-      },
-      {
-        "@id": "http://example.org/company/Amazon.com,%20Inc."
-      },
-      {
-        "@id": "http://example.org/company/Apple%20Inc."
       }
     ],
     "http://example.org/hasState": [
       {
-        "@id": "http://example.org/location/US/CA"
+        "@id": "http://example.org/location/US/OH"
       },
       {
         "@id": "http://example.org/location/US/WA"
@@ -246,14 +112,194 @@
     ]
   },
   {
-    "@id": "http://example.org/location/US/WA/Redmond/One%20Microsoft%20Way",
+    "@id": "http://example.org/riskFactor/General",
     "@type": [
-      "http://example.org/streetAddress"
+      "http://example.org/riskFactor"
+    ]
+  },
+  {
+    "@id": "http://example.org/riskFactor/Political",
+    "@type": [
+      "http://example.org/riskFactor"
+    ]
+  },
+  {
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence9",
+    "@type": [
+      "http://example.org/SECSentence"
     ],
-    "http://example.org/belongsToCity": [
+    "http://example.org/belongsToCompany": [
       {
-        "@id": "http://example.org/location/US/WA/Redmond"
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
       }
+    ],
+    "http://example.org/hasFilingYear": [
+      {
+        "@id": "http://example.org/date/2010"
+      }
+    ],
+    "http://example.org/relatedToRiskFactor": [
+      {
+        "@id": "http://example.org/riskFactor/Business"
+      }
+    ],
+    "http://example.org/text": [
+      {
+        "@value": "Interruption of operations at headquarters or distribution centers adversely impacting business"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence6",
+    "@type": [
+      "http://example.org/SECSentence"
+    ],
+    "http://example.org/belongsToCompany": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ],
+    "http://example.org/hasFilingYear": [
+      {
+        "@id": "http://example.org/date/2010"
+      }
+    ],
+    "http://example.org/relatedToRiskFactor": [
+      {
+        "@id": "http://example.org/riskFactor/Economy"
+      }
+    ],
+    "http://example.org/text": [
+      {
+        "@value": "Growth outside the United States increasing exposure to global economic and political conditions"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence20",
+    "@type": [
+      "http://example.org/SECSentence"
+    ],
+    "http://example.org/belongsToCompany": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ],
+    "http://example.org/hasFilingYear": [
+      {
+        "@id": "http://example.org/date/2011"
+      }
+    ],
+    "http://example.org/relatedToRiskFactor": [
+      {
+        "@id": "http://example.org/riskFactor/Business"
+      }
+    ],
+    "http://example.org/text": [
+      {
+        "@value": "Risk of interruption of operations at headquarters or distribution centers due to natural disasters or other events"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/riskFactor/Weather",
+    "@type": [
+      "http://example.org/riskFactor"
+    ]
+  },
+  {
+    "@id": "http://example.org/sector/industrials",
+    "@type": [
+      "http://example.org/sector"
+    ],
+    "http://example.org/companyInSector": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence8",
+    "@type": [
+      "http://example.org/SECSentence"
+    ],
+    "http://example.org/belongsToCompany": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ],
+    "http://example.org/hasFilingYear": [
+      {
+        "@id": "http://example.org/date/2010"
+      }
+    ],
+    "http://example.org/relatedToRiskFactor": [
+      {
+        "@id": "http://example.org/riskFactor/Business"
+      }
+    ],
+    "http://example.org/text": [
+      {
+        "@value": "Dependence on retaining and attracting qualified sales and customer service personnel"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence13",
+    "@type": [
+      "http://example.org/SECSentence"
+    ],
+    "http://example.org/belongsToCompany": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ],
+    "http://example.org/hasFilingYear": [
+      {
+        "@id": "http://example.org/date/2011"
+      }
+    ],
+    "http://example.org/relatedToRiskFactor": [
+      {
+        "@id": "http://example.org/riskFactor/Business"
+      }
+    ],
+    "http://example.org/text": [
+      {
+        "@value": "Consolidation in customers' and suppliers' industries affecting sales and earnings"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence0",
+    "@type": [
+      "http://example.org/SECSentence"
+    ],
+    "http://example.org/belongsToCompany": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ],
+    "http://example.org/hasFilingYear": [
+      {
+        "@id": "http://example.org/date/2010"
+      }
+    ],
+    "http://example.org/relatedToRiskFactor": [
+      {
+        "@id": "http://example.org/riskFactor/Economy"
+      }
+    ],
+    "http://example.org/text": [
+      {
+        "@value": "Economic downturn leading to reduced production levels and lower demand"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/location/US/OH/Cleveland",
+    "@type": [
+      "http://example.org/city"
     ],
     "http://example.org/belongsToCountry": [
       {
@@ -262,12 +308,195 @@
     ],
     "http://example.org/belongsToState": [
       {
-        "@id": "http://example.org/location/US/WA"
+        "@id": "http://example.org/location/US/OH"
       }
     ],
     "http://example.org/companiesHeadquartedIn": [
       {
-        "@id": "http://example.org/company/Microsoft%20Corporation"
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ],
+    "http://example.org/hasAddress": [
+      {
+        "@id": "http://example.org/location/US/OH/Cleveland/1%20Applied%20Plaza"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/riskFactor/Business",
+    "@type": [
+      "http://example.org/riskFactor"
+    ],
+    "http://example.org/companiesWithRiskFactor": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/industry/industrial-distribution",
+    "@type": [
+      "http://example.org/industry"
+    ],
+    "http://example.org/companyInIndustry": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence3",
+    "@type": [
+      "http://example.org/SECSentence"
+    ],
+    "http://example.org/belongsToCompany": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ],
+    "http://example.org/hasFilingYear": [
+      {
+        "@id": "http://example.org/date/2010"
+      }
+    ],
+    "http://example.org/relatedToRiskFactor": [
+      {
+        "@id": "http://example.org/riskFactor/Economy"
+      }
+    ],
+    "http://example.org/text": [
+      {
+        "@value": "Increase in competition potentially decreasing sales or earnings"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence10",
+    "@type": [
+      "http://example.org/SECSentence"
+    ],
+    "http://example.org/belongsToCompany": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ],
+    "http://example.org/hasFilingYear": [
+      {
+        "@id": "http://example.org/date/2010"
+      }
+    ],
+    "http://example.org/relatedToRiskFactor": [
+      {
+        "@id": "http://example.org/riskFactor/Business"
+      }
+    ],
+    "http://example.org/text": [
+      {
+        "@value": "Litigation risk due to nature of business potentially having a material adverse effect on business"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence7",
+    "@type": [
+      "http://example.org/SECSentence"
+    ],
+    "http://example.org/belongsToCompany": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ],
+    "http://example.org/hasFilingYear": [
+      {
+        "@id": "http://example.org/date/2010"
+      }
+    ],
+    "http://example.org/relatedToRiskFactor": [
+      {
+        "@id": "http://example.org/riskFactor/Business"
+      }
+    ],
+    "http://example.org/text": [
+      {
+        "@value": "Reliance on information systems for business transactions"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence12",
+    "@type": [
+      "http://example.org/SECSentence"
+    ],
+    "http://example.org/belongsToCompany": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ],
+    "http://example.org/hasFilingYear": [
+      {
+        "@id": "http://example.org/date/2011"
+      }
+    ],
+    "http://example.org/relatedToRiskFactor": [
+      {
+        "@id": "http://example.org/riskFactor/Economy"
+      }
+    ],
+    "http://example.org/text": [
+      {
+        "@value": "Economic downturn in recent years leading to reduced production levels and lower demand"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence14",
+    "@type": [
+      "http://example.org/SECSentence"
+    ],
+    "http://example.org/belongsToCompany": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ],
+    "http://example.org/hasFilingYear": [
+      {
+        "@id": "http://example.org/date/2011"
+      }
+    ],
+    "http://example.org/relatedToRiskFactor": [
+      {
+        "@id": "http://example.org/riskFactor/Business"
+      }
+    ],
+    "http://example.org/text": [
+      {
+        "@value": "Implementation of a new integrated information technology platform (SAP software)"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence17",
+    "@type": [
+      "http://example.org/SECSentence"
+    ],
+    "http://example.org/belongsToCompany": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ],
+    "http://example.org/hasFilingYear": [
+      {
+        "@id": "http://example.org/date/2011"
+      }
+    ],
+    "http://example.org/relatedToRiskFactor": [
+      {
+        "@id": "http://example.org/riskFactor/Economy"
+      }
+    ],
+    "http://example.org/text": [
+      {
+        "@value": "Tight credit markets impacting financing options and costs"
       }
     ]
   },
@@ -342,39 +571,396 @@
     ]
   },
   {
-    "@id": "http://example.org/location/US/WA/Seattle",
+    "@id": "http://example.org/location/US/OH",
     "@type": [
-      "http://example.org/city"
+      "http://example.org/state"
     ],
     "http://example.org/belongsToCountry": [
       {
         "@id": "http://example.org/location/US"
       }
     ],
-    "http://example.org/belongsToState": [
-      {
-        "@id": "http://example.org/location/US/WA"
-      }
-    ],
     "http://example.org/companiesHeadquartedIn": [
       {
-        "@id": "http://example.org/company/Amazon.com,%20Inc."
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
       }
     ],
-    "http://example.org/hasAddress": [
+    "http://example.org/hasCity": [
       {
-        "@id": "http://example.org/location/US/WA/Seattle/410%20Terry%20Avenue%20North"
+        "@id": "http://example.org/location/US/OH/Cleveland"
       }
     ]
   },
   {
-    "@id": "http://example.org/location/US/WA/Seattle/410%20Terry%20Avenue%20North",
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence15",
+    "@type": [
+      "http://example.org/SECSentence"
+    ],
+    "http://example.org/belongsToCompany": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ],
+    "http://example.org/hasFilingYear": [
+      {
+        "@id": "http://example.org/date/2011"
+      }
+    ],
+    "http://example.org/relatedToRiskFactor": [
+      {
+        "@id": "http://example.org/riskFactor/Energy"
+      }
+    ],
+    "http://example.org/text": [
+      {
+        "@value": "Volatility in product and energy costs impacting profitability"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/sector/technology",
+    "@type": [
+      "http://example.org/sector"
+    ],
+    "http://example.org/companyInSector": [
+      {
+        "@id": "http://example.org/company/Microsoft%20Corporation"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/location/US/OH/Cleveland/1%20Applied%20Plaza",
     "@type": [
       "http://example.org/streetAddress"
     ],
     "http://example.org/belongsToCity": [
       {
-        "@id": "http://example.org/location/US/WA/Seattle"
+        "@id": "http://example.org/location/US/OH/Cleveland"
+      }
+    ],
+    "http://example.org/belongsToCountry": [
+      {
+        "@id": "http://example.org/location/US"
+      }
+    ],
+    "http://example.org/belongsToState": [
+      {
+        "@id": "http://example.org/location/US/OH"
+      }
+    ],
+    "http://example.org/companiesHeadquartedIn": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies",
+    "@type": [
+      "http://example.org/company"
+    ],
+    "http://example.org/auditRisk": [
+      {
+        "@value": 4
+      }
+    ],
+    "http://example.org/boardRisk": [
+      {
+        "@value": 2
+      }
+    ],
+    "http://example.org/compensationRisk": [
+      {
+        "@value": 2
+      }
+    ],
+    "http://example.org/fullTimeEmployees": [
+      {
+        "@value": 6350
+      }
+    ],
+    "http://example.org/hasRiskFactor": [
+      {
+        "@id": "http://example.org/riskFactor/Business"
+      },
+      {
+        "@id": "http://example.org/riskFactor/Energy"
+      },
+      {
+        "@id": "http://example.org/riskFactor/Economy"
+      }
+    ],
+    "http://example.org/hasSECSentence": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence0"
+      },
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence1"
+      },
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence2"
+      },
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence3"
+      },
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence4"
+      },
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence5"
+      },
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence6"
+      },
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence7"
+      },
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence8"
+      },
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence9"
+      },
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence10"
+      },
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence11"
+      },
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence12"
+      },
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence13"
+      },
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence14"
+      },
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence15"
+      },
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence16"
+      },
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence17"
+      },
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence18"
+      },
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence19"
+      },
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence20"
+      },
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence21"
+      },
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence22"
+      }
+    ],
+    "http://example.org/headquarteredIn": [
+      {
+        "@id": "http://example.org/location/US/OH/Cleveland/1%20Applied%20Plaza"
+      },
+      {
+        "@id": "http://example.org/location/US/OH/Cleveland"
+      },
+      {
+        "@id": "http://example.org/location/US/OH"
+      },
+      {
+        "@id": "http://example.org/location/US"
+      }
+    ],
+    "http://example.org/industry": [
+      {
+        "@id": "http://example.org/industry/industrial-distribution"
+      }
+    ],
+    "http://example.org/longBusinessSummary": [
+      {
+        "@value": "Applied Industrial Technologies, Inc. distributes industrial motion, power, control, and automation technology solutions in North America, Australia, New Zealand, and Singapore. It operates in two segments, Service Center Based Distribution, and Engineered Solutions. The company distributes bearings, power transmission products, engineered fluid power components and systems, specialty flow control solutions, advanced automation products, industrial rubber products, linear motion components, automation solutions, tools, safety products, oilfield supplies, and other industrial and maintenance supplies; and motors, belting, drives, couplings, pumps, hydraulic and pneumatic components, filtration supplies, valves, fittings, process instrumentation, actuators, and hoses, filtration supplies, as well as other related supplies for general operational needs of customers' machinery and equipment. It also operates fabricated rubber shops and service field crews that install, modify, and repair conveyor belts and rubber linings, as well as offer hose assemblies. In addition, the company provides technical support services; engages in the distribution of fluid power and industrial flow control products; advanced automation solutions, including machine vision, robotics, motion control, and smart technologies. It distributes industrial products through a network of service centers. The company serves various industries, including agriculture and food processing, cement, chemicals and petrochemicals, fabricated metals, forest products, industrial machinery and equipment, life sciences, mining, oil and gas, primary metals, technology, transportation, and utilities, as well as government entities. The company was formerly known as Bearings, Inc. and changed its to name to Applied Industrial Technologies, Inc. in 1997. The company was founded in 1923 and is headquartered in Cleveland, Ohio."
+      }
+    ],
+    "http://example.org/overallRisk": [
+      {
+        "@value": 4
+      }
+    ],
+    "http://example.org/sector": [
+      {
+        "@id": "http://example.org/sector/industrials"
+      }
+    ],
+    "http://example.org/shareHolderRightsRisk": [
+      {
+        "@value": 9
+      }
+    ],
+    "http://example.org/symbol": [
+      {
+        "@value": "AIT"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence11",
+    "@type": [
+      "http://example.org/SECSentence"
+    ],
+    "http://example.org/belongsToCompany": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ],
+    "http://example.org/hasFilingYear": [
+      {
+        "@id": "http://example.org/date/2010"
+      }
+    ],
+    "http://example.org/relatedToRiskFactor": [
+      {
+        "@id": "http://example.org/riskFactor/Business"
+      }
+    ],
+    "http://example.org/text": [
+      {
+        "@value": "Other risks including changes in customer preferences, procurement policies, market prices, operating expenses, organizational changes, adverse regulation and legislation, variability and timing of new business opportunities, debt incurrence in acquisitions, volatility of stock price, changes in accounting policies and practices, and instability in banking systems."
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence2",
+    "@type": [
+      "http://example.org/SECSentence"
+    ],
+    "http://example.org/belongsToCompany": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ],
+    "http://example.org/hasFilingYear": [
+      {
+        "@id": "http://example.org/date/2010"
+      }
+    ],
+    "http://example.org/relatedToRiskFactor": [
+      {
+        "@id": "http://example.org/riskFactor/Business"
+      }
+    ],
+    "http://example.org/text": [
+      {
+        "@value": "Loss of key supplier authorizations, lack of product availability, or changes in supplier distribution programs impacting sales and earnings"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence19",
+    "@type": [
+      "http://example.org/SECSentence"
+    ],
+    "http://example.org/belongsToCompany": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ],
+    "http://example.org/hasFilingYear": [
+      {
+        "@id": "http://example.org/date/2011"
+      }
+    ],
+    "http://example.org/relatedToRiskFactor": [
+      {
+        "@id": "http://example.org/riskFactor/Business"
+      }
+    ],
+    "http://example.org/text": [
+      {
+        "@value": "Dependence on retaining and attracting qualified sales and customer service personnel"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence22",
+    "@type": [
+      "http://example.org/SECSentence"
+    ],
+    "http://example.org/belongsToCompany": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ],
+    "http://example.org/hasFilingYear": [
+      {
+        "@id": "http://example.org/date/2011"
+      }
+    ],
+    "http://example.org/relatedToRiskFactor": [
+      {
+        "@id": "http://example.org/riskFactor/Business"
+      }
+    ],
+    "http://example.org/text": [
+      {
+        "@value": "Other risks such as changes in customer preferences, procurement policies, market prices, operating expenses, regulation and legislation, new business opportunities, debt and contingent liabilities, stock price volatility, and changes in accounting policies and practices."
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence16",
+    "@type": [
+      "http://example.org/SECSentence"
+    ],
+    "http://example.org/belongsToCompany": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ],
+    "http://example.org/hasFilingYear": [
+      {
+        "@id": "http://example.org/date/2011"
+      }
+    ],
+    "http://example.org/relatedToRiskFactor": [
+      {
+        "@id": "http://example.org/riskFactor/Business"
+      }
+    ],
+    "http://example.org/text": [
+      {
+        "@value": "Dependence on acquisitions for growth, with potential challenges in integration and realization of benefits"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/date/2011",
+    "@type": [
+      "http://example.org/year"
+    ]
+  },
+  {
+    "@id": "http://example.org/riskFactor/Energy",
+    "@type": [
+      "http://example.org/riskFactor"
+    ],
+    "http://example.org/companiesWithRiskFactor": [
+      {
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
+      }
+    ]
+  },
+  {
+    "@id": "http://example.org/location/US/WA/Redmond/One%20Microsoft%20Way",
+    "@type": [
+      "http://example.org/streetAddress"
+    ],
+    "http://example.org/belongsToCity": [
+      {
+        "@id": "http://example.org/location/US/WA/Redmond"
       }
     ],
     "http://example.org/belongsToCountry": [
@@ -389,18 +975,7 @@
     ],
     "http://example.org/companiesHeadquartedIn": [
       {
-        "@id": "http://example.org/company/Amazon.com,%20Inc."
-      }
-    ]
-  },
-  {
-    "@id": "http://example.org/industry/consumer-electronics",
-    "@type": [
-      "http://example.org/industry"
-    ],
-    "http://example.org/companyInIndustry": [
-      {
-        "@id": "http://example.org/company/Apple%20Inc."
+        "@id": "http://example.org/company/Microsoft%20Corporation"
       }
     ]
   },
@@ -431,32 +1006,6 @@
     ]
   },
   {
-    "@id": "http://example.org/location/US/CA/Santa%20Clara/2788%20San%20Tomas%20Expressway",
-    "@type": [
-      "http://example.org/streetAddress"
-    ],
-    "http://example.org/belongsToCity": [
-      {
-        "@id": "http://example.org/location/US/CA/Santa%20Clara"
-      }
-    ],
-    "http://example.org/belongsToCountry": [
-      {
-        "@id": "http://example.org/location/US"
-      }
-    ],
-    "http://example.org/belongsToState": [
-      {
-        "@id": "http://example.org/location/US/CA"
-      }
-    ],
-    "http://example.org/companiesHeadquartedIn": [
-      {
-        "@id": "http://example.org/company/NVIDIA%20Corporation"
-      }
-    ]
-  },
-  {
     "@id": "http://example.org/industry/software-infrastructure",
     "@type": [
       "http://example.org/industry"
@@ -468,290 +1017,80 @@
     ]
   },
   {
-    "@id": "http://example.org/location/US/CA/Cupertino/One%20Apple%20Park%20Way",
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence21",
     "@type": [
-      "http://example.org/streetAddress"
+      "http://example.org/SECSentence"
     ],
-    "http://example.org/belongsToCity": [
+    "http://example.org/belongsToCompany": [
       {
-        "@id": "http://example.org/location/US/CA/Cupertino"
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
       }
     ],
-    "http://example.org/belongsToCountry": [
+    "http://example.org/hasFilingYear": [
       {
-        "@id": "http://example.org/location/US"
+        "@id": "http://example.org/date/2011"
       }
     ],
-    "http://example.org/belongsToState": [
+    "http://example.org/relatedToRiskFactor": [
       {
-        "@id": "http://example.org/location/US/CA"
+        "@id": "http://example.org/riskFactor/Business"
       }
     ],
-    "http://example.org/companiesHeadquartedIn": [
+    "http://example.org/text": [
       {
-        "@id": "http://example.org/company/Apple%20Inc."
+        "@value": "Litigation risk due to business transactions, potentially leading to higher operating expenses"
       }
     ]
   },
   {
-    "@id": "http://example.org/location/US/CA/Santa%20Clara",
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence4",
     "@type": [
-      "http://example.org/city"
+      "http://example.org/SECSentence"
     ],
-    "http://example.org/belongsToCountry": [
+    "http://example.org/belongsToCompany": [
       {
-        "@id": "http://example.org/location/US"
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
       }
     ],
-    "http://example.org/belongsToState": [
+    "http://example.org/hasFilingYear": [
       {
-        "@id": "http://example.org/location/US/CA"
+        "@id": "http://example.org/date/2010"
       }
     ],
-    "http://example.org/companiesHeadquartedIn": [
+    "http://example.org/relatedToRiskFactor": [
       {
-        "@id": "http://example.org/company/NVIDIA%20Corporation"
-      },
-      {
-        "@id": "http://example.org/company/Advanced%20Micro%20Devices,%20Inc."
+        "@id": "http://example.org/riskFactor/Energy"
       }
     ],
-    "http://example.org/hasAddress": [
+    "http://example.org/text": [
       {
-        "@id": "http://example.org/location/US/CA/Santa%20Clara/2788%20San%20Tomas%20Expressway"
-      },
-      {
-        "@id": "http://example.org/location/US/CA/Santa%20Clara/2485%20Augustine%20Drive"
+        "@value": "Volatility in product and energy costs affecting profitability"
       }
     ]
   },
   {
-    "@id": "http://example.org/company/NVIDIA%20Corporation",
+    "@id": "http://example.org/company/Applied%20Industrial%20Technologies/SEC/sentence/sentence1",
     "@type": [
-      "http://example.org/company"
+      "http://example.org/SECSentence"
     ],
-    "http://example.org/auditRisk": [
+    "http://example.org/belongsToCompany": [
       {
-        "@value": 7
+        "@id": "http://example.org/company/Applied%20Industrial%20Technologies"
       }
     ],
-    "http://example.org/boardRisk": [
+    "http://example.org/hasFilingYear": [
       {
-        "@value": 10
+        "@id": "http://example.org/date/2010"
       }
     ],
-    "http://example.org/compensationRisk": [
+    "http://example.org/relatedToRiskFactor": [
       {
-        "@value": 1
+        "@id": "http://example.org/riskFactor/Business"
       }
     ],
-    "http://example.org/fullTimeEmployees": [
+    "http://example.org/text": [
       {
-        "@value": 29600
-      }
-    ],
-    "http://example.org/headquarteredIn": [
-      {
-        "@id": "http://example.org/location/US/CA/Santa%20Clara/2788%20San%20Tomas%20Expressway"
-      },
-      {
-        "@id": "http://example.org/location/US/CA/Santa%20Clara"
-      },
-      {
-        "@id": "http://example.org/location/US/CA"
-      },
-      {
-        "@id": "http://example.org/location/US"
-      }
-    ],
-    "http://example.org/industry": [
-      {
-        "@id": "http://example.org/industry/semiconductors"
-      }
-    ],
-    "http://example.org/longBusinessSummary": [
-      {
-        "@value": "NVIDIA Corporation provides graphics and compute and networking solutions in the United States, Taiwan, China, Hong Kong, and internationally. The Graphics segment offers GeForce GPUs for gaming and PCs, the GeForce NOW game streaming service and related infrastructure, and solutions for gaming platforms; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics; virtual GPU or vGPU software for cloud-based visual and virtual computing; automotive platforms for infotainment systems; and Omniverse software for building and operating metaverse and 3D internet applications. The Compute & Networking segment comprises Data Center computing platforms and end-to-end networking platforms, including Quantum for InfiniBand and Spectrum for Ethernet; NVIDIA DRIVE automated-driving platform and automotive development agreements; Jetson robotics and other embedded platforms; NVIDIA AI Enterprise and other software; and DGX Cloud software and services. The company's products are used in gaming, professional visualization, data center, and automotive markets. It sells its products to original equipment manufacturers, original device manufacturers, system integrators and distributors, independent software vendors, cloud service providers, consumer internet companies, add-in board manufacturers, distributors, automotive manufacturers and tier-1 automotive suppliers, and other ecosystem participants. NVIDIA Corporation was incorporated in 1993 and is headquartered in Santa Clara, California."
-      }
-    ],
-    "http://example.org/overallRisk": [
-      {
-        "@value": 7
-      }
-    ],
-    "http://example.org/sector": [
-      {
-        "@id": "http://example.org/sector/technology"
-      }
-    ],
-    "http://example.org/shareHolderRightsRisk": [
-      {
-        "@value": 6
-      }
-    ],
-    "http://example.org/symbol": [
-      {
-        "@value": "NVDA"
-      }
-    ]
-  },
-  {
-    "@id": "http://example.org/location/US/WA",
-    "@type": [
-      "http://example.org/state"
-    ],
-    "http://example.org/belongsToCountry": [
-      {
-        "@id": "http://example.org/location/US"
-      }
-    ],
-    "http://example.org/companiesHeadquartedIn": [
-      {
-        "@id": "http://example.org/company/Microsoft%20Corporation"
-      },
-      {
-        "@id": "http://example.org/company/Amazon.com,%20Inc."
-      }
-    ],
-    "http://example.org/hasCity": [
-      {
-        "@id": "http://example.org/location/US/WA/Redmond"
-      },
-      {
-        "@id": "http://example.org/location/US/WA/Seattle"
-      }
-    ]
-  },
-  {
-    "@id": "http://example.org/company/Apple%20Inc.",
-    "@type": [
-      "http://example.org/company"
-    ],
-    "http://example.org/auditRisk": [
-      {
-        "@value": 6
-      }
-    ],
-    "http://example.org/boardRisk": [
-      {
-        "@value": 1
-      }
-    ],
-    "http://example.org/compensationRisk": [
-      {
-        "@value": 2
-      }
-    ],
-    "http://example.org/fullTimeEmployees": [
-      {
-        "@value": 150000
-      }
-    ],
-    "http://example.org/headquarteredIn": [
-      {
-        "@id": "http://example.org/location/US/CA/Cupertino/One%20Apple%20Park%20Way"
-      },
-      {
-        "@id": "http://example.org/location/US/CA/Cupertino"
-      },
-      {
-        "@id": "http://example.org/location/US/CA"
-      },
-      {
-        "@id": "http://example.org/location/US"
-      }
-    ],
-    "http://example.org/industry": [
-      {
-        "@id": "http://example.org/industry/consumer-electronics"
-      }
-    ],
-    "http://example.org/longBusinessSummary": [
-      {
-        "@value": "Apple Inc. designs, manufactures, and markets smartphones, personal computers, tablets, wearables, and accessories worldwide. The company offers iPhone, a line of smartphones; Mac, a line of personal computers; iPad, a line of multi-purpose tablets; and wearables, home, and accessories comprising AirPods, Apple TV, Apple Watch, Beats products, and HomePod. It also provides AppleCare support and cloud services; and operates various platforms, including the App Store that allow customers to discover and download applications and digital content, such as books, music, video, games, and podcasts. In addition, the company offers various services, such as Apple Arcade, a game subscription service; Apple Fitness+, a personalized fitness service; Apple Music, which offers users a curated listening experience with on-demand radio stations; Apple News+, a subscription news and magazine service; Apple TV+, which offers exclusive original content; Apple Card, a co-branded credit card; and Apple Pay, a cashless payment service, as well as licenses its intellectual property. The company serves consumers, and small and mid-sized businesses; and the education, enterprise, and government markets. It distributes third-party applications for its products through the App Store. The company also sells its products through its retail and online stores, and direct sales force; and third-party cellular network carriers, wholesalers, retailers, and resellers. Apple Inc. was founded in 1976 and is headquartered in Cupertino, California."
-      }
-    ],
-    "http://example.org/overallRisk": [
-      {
-        "@value": 1
-      }
-    ],
-    "http://example.org/sector": [
-      {
-        "@id": "http://example.org/sector/technology"
-      }
-    ],
-    "http://example.org/shareHolderRightsRisk": [
-      {
-        "@value": 1
-      }
-    ],
-    "http://example.org/symbol": [
-      {
-        "@value": "AAPL"
-      }
-    ]
-  },
-  {
-    "@id": "http://example.org/sector/consumer-cyclical",
-    "@type": [
-      "http://example.org/sector"
-    ],
-    "http://example.org/companyInSector": [
-      {
-        "@id": "http://example.org/company/Amazon.com,%20Inc."
-      }
-    ]
-  },
-  {
-    "@id": "http://example.org/location/US/CA/Santa%20Clara/2485%20Augustine%20Drive",
-    "@type": [
-      "http://example.org/streetAddress"
-    ],
-    "http://example.org/belongsToCity": [
-      {
-        "@id": "http://example.org/location/US/CA/Santa%20Clara"
-      }
-    ],
-    "http://example.org/belongsToCountry": [
-      {
-        "@id": "http://example.org/location/US"
-      }
-    ],
-    "http://example.org/belongsToState": [
-      {
-        "@id": "http://example.org/location/US/CA"
-      }
-    ],
-    "http://example.org/companiesHeadquartedIn": [
-      {
-        "@id": "http://example.org/company/Advanced%20Micro%20Devices,%20Inc."
-      }
-    ]
-  },
-  {
-    "@id": "http://example.org/location/US/CA/Cupertino",
-    "@type": [
-      "http://example.org/city"
-    ],
-    "http://example.org/belongsToCountry": [
-      {
-        "@id": "http://example.org/location/US"
-      }
-    ],
-    "http://example.org/belongsToState": [
-      {
-        "@id": "http://example.org/location/US/CA"
-      }
-    ],
-    "http://example.org/companiesHeadquartedIn": [
-      {
-        "@id": "http://example.org/company/Apple%20Inc."
-      }
-    ],
-    "http://example.org/hasAddress": [
-      {
-        "@id": "http://example.org/location/US/CA/Cupertino/One%20Apple%20Park%20Way"
+        "@value": "Consolidation in customers' and suppliers' industries affecting business and financial results"
       }
     ]
   }
