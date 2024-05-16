@@ -1,5 +1,3 @@
-# ADD COMMANDS TO LIST COMPANIES, RISK FACTORS, ETC SO THEY CAN QUERY??
-
 from KnowledgeGraph import KnowledgeGraph
 
 g = KnowledgeGraph()
