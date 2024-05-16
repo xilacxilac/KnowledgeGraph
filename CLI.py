@@ -56,7 +56,7 @@ while command != "exit":
                 print("Missing or too many arguments")
         elif args[0] == "query_SEC_sentences_by_sector":
             if len(args) == 2:
-                g.query_SEC_sentences_by_sector(args[1])
+                print(g.query_SEC_sentences_by_sector(args[1]))
             else:
                 print("Missing or too many arguments")
         elif args[0] == "query_SEC_sentences_by_sector_year":
