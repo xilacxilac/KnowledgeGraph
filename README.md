@@ -146,6 +146,23 @@
 #### Description
 - Provides a command line interface for the Knowledge Graphs
 
+        quick_build
+        add_company MSFT
+        list_sectors
+        list_industries
+        list_companies
+        list_risk_factors
+        query_by_sector technology
+        query_by_ticker IBM
+        query_risk_factors AAPL
+        query_by_risk_factor Energy
+        query_SEC_sentences AIT
+        query_SEC_sentences_by_year AIT 2010
+        query_SEC_sentences_by_sector technology
+        query_SEC_sentences_by_sector_year technology 2010
+        export_graph
+
+
 ### AttributeBuilder.py
 #### Description
 - Provides functions that gets and loosely formats attribute information for the graph
