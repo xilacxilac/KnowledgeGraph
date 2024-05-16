@@ -1,13 +1,28 @@
-# 5MODA8JgyXRwgmI2iWVWKY
-
 import urllib.parse
 import pycountry
 
 from AttributeBuilder import yf_company_twoway_attr, build_company, build_risk_factor, get_company_name
-from rdflib import Graph, Literal, RDF, URIRef, RDFS
+from rdflib import Graph, Literal, RDF, URIRef
 from rdflib.tools.rdf2dot import rdf2dot
 from io import StringIO
 
+quick_build_tickers = {'KINS', 'ACU', 'B', 'TCI', 'UHAL', 'CVCO', 'COKE', 'BA', 'HAS', 'CVR', 'NEE', 'CACI', 'FHN',
+                       'CVX', 'HRB', 'AVY', 'FMC', 'COO', 'USB', 'CULP', 'EAT', 'AIG', 'CATO', 'IDCC', 'AFL', 'FELE',
+                       'GLW', 'AME', 'JPM', 'BC', 'ADI', 'AVT', 'CMTL', 'TRMK', 'AIRT', 'FLS', 'AAPL', 'AIT', 'SWKS',
+                       'HE', 'GHM', 'CCK', 'GATX', 'BOOM', 'BSET', 'PCG', 'ARCB', 'M', 'VZ', 'GPC', 'TGT', 'ATRO',
+                       'BPOP', 'ALCO', 'BRC', 'NEU', 'ATO', 'EQT', 'D', 'BAX', 'JOB', 'BK', 'ETR', 'GGG', 'ABM', 'AAL',
+                       'AEP', 'DTE', 'BOH', 'IFF', 'CHDN', 'CBT', 'CAG', 'CWT', 'DG', 'DHR', 'DLX', 'GIS', 'NBR', 'CMA',
+                       'DAN', 'IP', 'FRD', 'IBM', 'AVD', 'EFX', 'FCNCA', 'ARL', 'CPB', 'IPG', 'CW', 'CNA', 'ALOT',
+                       'INTC', 'GTN', 'FDX', 'CMI', 'HXL', 'ADSK', 'DE', 'REX', 'BIO', 'HUBB', 'CMCSA', 'EBF', 'MATX',
+                       'AMSWA', 'HSY', 'XOM', 'GRC', 'BEN', 'FITB', 'RYN', 'ITW', 'STRL', 'ECL', 'CSX', 'FSS', 'TGNA',
+                       'WEN', 'BRID', 'CAMP', 'CSL', 'MTZ', 'DWSN', 'MTB', 'ADP', 'RYI', 'AE', 'ED', 'BDX', 'CHE',
+                       'CNP', 'AZZ', 'AIR', 'HPQ', 'APOG', 'MARA', 'GD', 'AXR', 'HRL', 'ATRI', 'DBD', 'EMR', 'IIIN',
+                       'HON', 'CPK', 'F', 'CBRL', 'ESCA', 'HP', 'TAP', 'GNTX', 'ENZN', 'BMI', 'ALK', 'GPS', 'KODK',
+                       'GM', 'BKH', 'BDL', 'DDS', 'AON', 'HNI', 'FSTR', 'GWW', 'FUL', 'TILE', 'SPXC', 'HD', 'EGP',
+                       'PXD', 'AMAT', 'BELFB', 'FRT', 'HVT', 'ALLY', 'BBY', 'CAL', 'CMS', 'HBAN', 'GIGA', 'PNW', 'JBHT',
+                       'CMC', 'GLT', 'EDUC', 'CL', 'AJG', 'RF', 'CFR', 'MTRN', 'GFF', 'KO', 'HOV', 'FLXS', 'RAVE',
+                       'COHU', 'EML', 'DOV', 'IDA', 'CDE', 'RHI', 'WELL', 'OSG', 'HWKN', 'HEI', 'DAL', 'DUK', 'FLR',
+                       'STZ', 'CTAS', 'DY', 'BMY', 'CRS', 'BRN', 'BCPC', 'ABT', 'DAIO', 'FLO', 'ENZ', 'CTO'}
 rdf_types = {"streetAddress", "city", "state", "country", "company", "sector", "industry", "riskFactor", "year", "month",
              "day", "SECSentence"}
 predicates = {"hasState", "belongsToCountry", "hasCity", "belongsToState", "hasAddress", "belongsToCity", "isYear",
@@ -233,7 +248,18 @@ class KnowledgeGraph:
 
             return "Success"
 
-    def reformat_query(self, results):
+    def quick_build(self) -> str:
+        failures = 0
+        for ticker in quick_build_tickers:
+            response = self.add_risk_factors(ticker)
+            if response != "Success":
+                failures += 1
+                print(response)
+
+        return f"Completed with {failures} failures"
+
+    @staticmethod
+    def reformat_single_query(results):
         results_list = list()
         for result in results:
             uri = result[0]
@@ -242,64 +268,222 @@ class KnowledgeGraph:
 
         return results_list
 
+    @staticmethod
+    def reformat_double_query(results):
+        results_list = list()
+        for result in results:
+            predicate_uri = result[0]
+            predicate = urllib.parse.unquote(predicate_uri.split('/')[-1])
+            if predicate == "22-rdf-syntax-ns#type":
+                predicate = "type"
+
+            object_uri = result[1]
+            object_ = urllib.parse.unquote(object_uri.split('/')[-1])
+            results_list.append((predicate, object_))
+
+        return results_list
+
     def list_sectors(self):
         query = f"""
-                    PREFIX ns1: <{self.uri}>
-                    SELECT DISTINCT ?sector
-                    WHERE {{
-                        ?company ns1:sector ?sector .
-                    }}
-                """
-        return self.reformat_query(self.rdf.query(query))
+            PREFIX ns1: <{self.uri}>
+            SELECT DISTINCT ?sector
+            WHERE {{
+                ?company ns1:sector ?sector .
+            }}
+        """
+
+        return self.reformat_single_query(self.rdf.query(query))
 
     def query_by_sector(self, sector):
         query = f"""
             PREFIX ns1: <{self.uri}>
-            SELECT ?company
+            SELECT ?company ?symbol
             WHERE {{
                 ?company rdf:type ns1:company .
-                ?company ns1:sector <http://example.org/sector/{sector}> .
+                ?company ns1:symbol ?symbol .
+                ?company ns1:sector <{self.uri}sector/{sector}> .
             }}
         """
 
-        return self.reformat_query(self.rdf.query(query))
+        return self.reformat_double_query(self.rdf.query(query))
 
-    def list_industry(self):
-        query = f"""
-                    PREFIX ns1: <{self.uri}>
-                    SELECT DISTINCT ?industry
-                    WHERE {{
-                        ?company ns1:industry ?industry .
-                    }}
-                """
-        return self.reformat_query(self.rdf.query(query))
-
-    def query_by_industry(self, industry):
+    def list_industries(self):
         query = f"""
             PREFIX ns1: <{self.uri}>
-            SELECT ?company
+            SELECT DISTINCT ?industry
+            WHERE {{
+                ?company ns1:industry ?industry .
+            }}
+        
+        """
+        return self.reformat_single_query(self.rdf.query(query))
+
+    def query_by_industries(self, industry):
+        query = f"""
+            PREFIX ns1: <{self.uri}>
+            SELECT ?company ?symbol 
             WHERE {{
                 ?company rdf:type ns1:company .
-                ?company ns1:industry <http://example.org/industry/{industry}> .
+                ?company ns1:symbol ?symbol .
+                ?company ns1:industry <{self.uri}industry/{industry}> .
             }}
         """
 
-        return self.reformat_query(self.rdf.query(query))
+        return self.reformat_double_query(self.rdf.query(query))
 
-    def export_visualization(self) -> None:
-        dot_stream = StringIO()
-        rdf2dot(self.rdf, dot_stream)
-        dot_data = dot_stream.getvalue()
+    def list_companies(self):
+        query = f"""
+            PREFIX ns1: <{self.uri}>
+            SELECT DISTINCT ?company ?symbol
+            WHERE {{
+                ?company ns1:symbol ?symbol .
+            }}
+        """
 
-        # Save DOT data to a file
-        with open("graph.dot", "w") as dot_file:
-            dot_file.write(dot_data)
+        return self.reformat_double_query(self.rdf.query(query))
 
-    def export_graph(self, output: str = "output.json", format_: str = "json-ld") -> None:
+    def query_by_ticker(self, ticker):
+        query = f"""
+            PREFIX ns1: <{self.uri}>
+            SELECT ?predicate ?object
+            WHERE {{
+                ?company rdf:type ns1:company .
+                ?company ns1:symbol "{ticker}" .
+                ?company ?predicate ?object .
+            }}
+        """
+
+        return self.reformat_double_query(self.rdf.query(query))
+
+    def query_risk_factors(self, ticker):
+        query = f"""
+            PREFIX ns1: <{self.uri}>
+            SELECT ?riskFactor
+            WHERE {{
+                ?company ns1:symbol "{ticker}" .
+                ?company ns1:hasRiskFactor ?riskFactor .
+            }}
+        """
+
+        return self.reformat_single_query(self.rdf.query(query))
+
+    def query_SEC_sentences(self, ticker):
+        query = f"""
+            PREFIX ns1: <{self.uri}>
+            SELECT ?text
+            WHERE {{
+                ?company ns1:symbol "{ticker}" .
+                ?company ns1:hasSECSentence ?SECSentence .
+                ?SECSentence ns1:text ?text .
+            }}
+        """
+
+        return self.reformat_single_query(self.rdf.query(query))
+
+    def query_SEC_sentences_by_year(self, ticker, year):
+        query = f"""
+            PREFIX ns1: <{self.uri}>
+            SELECT ?text
+            WHERE {{
+                ?company ns1:symbol "{ticker}" .
+                ?company ns1:hasSECSentence ?SECSentence .
+                ?SECSentence ns1:hasFilingYear <{self.uri}date/{year}> .
+                ?SECSentence ns1:text ?text .
+            }}
+        """
+
+        return self.reformat_single_query(self.rdf.query(query))
+
+    def query_SEC_sentences_by_sector(self, sector):
+        query = f"""
+            PREFIX ns1: <{self.uri}>
+            SELECT ?text
+            WHERE {{
+                ?company ns1:sector <{self.uri}sector/{sector}> .
+                ?company ns1:hasSECSentence ?SECSentence .
+                ?SECSentence ns1:text ?text .
+            }}
+        """
+
+        return self.reformat_single_query(self.rdf.query(query))
+
+    def query_SEC_sentences_by_sector_year(self, sector, year):
+        query = f"""
+            PREFIX ns1: <{self.uri}>
+            SELECT ?text
+            WHERE {{
+                ?company ns1:sector <{self.uri}sector/{sector}> .
+                ?company ns1:hasSECSentence ?SECSentence .
+                ?SECSentence ns1:hasFilingYear <{self.uri}date/{year}> .
+                ?SECSentence ns1:text ?text .
+            }}
+        """
+
+        return self.reformat_single_query(self.rdf.query(query))
+
+    def query_SEC_sentences_by_industry(self, industry):
+        query = f"""
+            PREFIX ns1: <{self.uri}>
+            SELECT ?text
+            WHERE {{
+                ?company ns1:industry <{self.uri}industry/{industry}> .
+                ?company ns1:hasSECSentence ?SECSentence .
+                ?SECSentence ns1:text ?text .
+            }}
+        """
+
+        return self.reformat_single_query(self.rdf.query(query))
+
+    def query_SEC_sentences_by_industry_year(self, industry, year):
+        query = f"""
+            PREFIX ns1: <{self.uri}>
+            SELECT ?text
+            WHERE {{
+                ?company ns1:industry <{self.uri}industry/{industry}> .
+                ?company ns1:hasSECSentence ?SECSentence .
+                ?SECSentence ns1:hasFilingYear <{self.uri}date/{year}> .
+                ?SECSentence ns1:text ?text .
+            }}
+        """
+
+        return self.reformat_single_query(self.rdf.query(query))
+
+    def list_risk_factors(self):
+        return list(risk_factors)
+
+    def query_by_risk_factor(self, risk_factor):
+        query = f"""
+            PREFIX ns1: <{self.uri}>
+            SELECT ?company ?symbol
+            WHERE {{
+                ?company rdf:type ns1:company .
+                ?company ns1:hasRiskFactor <{self.uri}riskFactor/{risk_factor}> .
+                ?company ns1:symbol ?symbol
+            }}
+        """
+
+        return self.reformat_double_query(self.rdf.query(query))
+
+    def export_visualization(self) -> str:
+        try:
+            dot_stream = StringIO()
+            rdf2dot(self.rdf, dot_stream)
+            dot_data = dot_stream.getvalue()
+
+            with open("graph.dot", "w") as dot_file:
+                dot_file.write(dot_data)
+
+            return "Success"
+        except Exception as e:
+            return str(e)
+
+    def export_graph(self, output: str = "output.json", format_: str = "json-ld") -> str:
         try:
             serialized_data = self.rdf.serialize(format=format_)
 
             with open(output, 'w') as json_file:
                 json_file.write(serialized_data)
+
+            return "Success"
         except Exception as e:
-            print(e)
+            return str(e)
