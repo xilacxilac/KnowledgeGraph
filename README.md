@@ -146,6 +146,7 @@
 #### Description
 - Provides a command line interface for the Knowledge Graphs
 
+        # Example Commands to Run
         quick_build
         add_company MSFT
         list_sectors
