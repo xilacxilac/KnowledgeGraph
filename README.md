@@ -36,7 +36,7 @@
 
 #### Common Nodes and Predicates
 - Node Types
-  - streetAddress, city, state, country, company, sector, industry, riskFactor, year, month, day, SECSentence
+  - streetAddress, city, state, country, company, sector, industry, riskFactor, year, month, day, SECSentence, industry, sector, longBusinessSummary, fullTimeEmployees, auditRisk, boardRisk, compensationRisk, shareHolderRightsRisk, overallRisk, symbol
 - Predicates
   - RDF.type, hasState, belongsToCountry, hasCity, belongsToState, hasAddress, belongsToCity, isYear, isMonth, text, relatedToRiskFactor, belongsToCompany, hasRiskFactor, companiesWithRiskFactor, hasFilingYear, hasSECSentence
 - Risk Factors
