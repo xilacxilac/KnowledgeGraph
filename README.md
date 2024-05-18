@@ -44,7 +44,7 @@
 
 #### Schemas
 - Company
-  - Type: RDF.type
+  - Object Type: RDF.type
   - Ticker: symbol
   - Location of HQ: headquarteredIn
   - Long Business Summary: longBusinessSummary
@@ -59,30 +59,30 @@
   - SEC 10-K Filing Sentence [Optional]: hasSECSentence 
   - Risk Factors [Optional]: hasRiskFactor
 - SECSentence
-  - Type: RDF.type
+  - Object Type: RDF.type
   - SEC Sentence: text
   - Filing Year: hasFilingYear
   - Related Risk Factor: relatedToRiskFactor
   - Related Company: belongsToCompany
 - Location - Address
-  - Type: RDF.type
+  - Object Type: RDF.type
   - City: belongsToCity
   - State: belongsToState
   - Country: belongsToCountry
   - Companies at Address: companiesHeadquartedIn
 - Location - City
-  - Type: RDF.type
+  - Object Type: RDF.type
   - State: belongsToState
   - Country: belongsToCountry 
   - Companies in City: companiesHeadquartedIn
   - Address in City: hasAddress
 - Location - State
-  - Type: RDF.type
+  - Object Type: RDF.type
   - Country: belongsToCountry 
   - Companies in State: companiesHeadquartedIn
   - City in State: hasCity
 - Location - Country
-  - Type: RDF.type
+  - Object Type: RDF.type
   - Companies in Country: companiesHeadquartedIn
   - State in Country: hasState
 
